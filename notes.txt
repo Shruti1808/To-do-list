@@ -1,0 +1,17 @@
+Basic ToDo app Functionality
+
+-checkboxes indicate “done/undone” status
+-done items are moved to a separate section
+-a button to clear done items
+-tasks can have a priority status (urgent)
+
+
+
+
+Deeper Functionality
+
+-ability to add an item to a list
+-ability check items as done
+-ability to check items as urgent
+
+
