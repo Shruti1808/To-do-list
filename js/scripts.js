@@ -15,21 +15,20 @@ var makeTask = function(task) {
   newDiv.className = "task-container todo";
   title.className = "task-name";
   details.className = "task-details";
-  doneButton.className = "btn btn-success done-button"
-  doneButton.innerHTML = "Done!"
-  priorityButton.className = "btn btn-danger priority-button"
-  priorityButton.innerHTML = "Mark as Urgent"
-  priorityButton.setAttribute("value", false);
-  undoButton.className = "btn btn-info undo-button"
-  undoButton.innerHTML = "Undo"
+  doneButton.className = "btn btn-success done-button";
+  doneButton.innerHTML = "Done!";
+  priorityButton.className = "btn btn-danger priority-button";
+  priorityButton.innerHTML = "Toggle Priority";
+  undoButton.className = "btn btn-info undo-button";
+  undoButton.innerHTML = "Undo";
   document.getElementById("to-do-list").append(newDiv);
   newDiv.append(title);
   newDiv.append(details);
   newDiv.append(doneButton);
   newDiv.append(priorityButton);
   newDiv.append(undoButton);
-  newDiv.childNodes[0].append(task.taskName)
-  newDiv.childNodes[1].append(task.details)
+  newDiv.childNodes[0].append(task.taskName);
+  newDiv.childNodes[1].append(task.details);
   console.log(document.getElementById("to-do-list"));
 }
 
@@ -44,26 +43,32 @@ $(document).ready(function(){
     var newTask = new Task(inputtedTask, inputtedTaskDetails);
     makeTask(newTask);
 
-  $(".done-button").click(function(){
-    $("#done-list").append($(this).parent());
-    $(this).hide();
-    $(this).next().hide();
-    $(this).next().next().show();
-  })
+    $(".done-button").off().click(function(){
+      $("#done-list").append($(this).parent());
+      $(this).hide();
+      $(this).next().hide();
+      $(this).next().next().show();
+    })
 
-  $(".undo-button").click(function(){
-    $("#to-do-list").append($(this).parent());
-    $(this).hide();
-    $(this).prev().show();
-    $(this).prev().prev().show();
-  })
+    $(".undo-button").off().click(function(){
+      $("#to-do-list").append($(this).parent());
+      $(this).hide();
+      $(this).prev().show();
+      $(this).prev().prev().show();
+    })
 
-  $(".priority-button").click(function(){
-    $("#priority-list").append($(this).parent());
-    $(this).parent().toggleClass("bg-danger");
-  })
+    $(".priority-button").off().click(function(){
+      if ($(this).parent().hasClass("bg-danger") === true) {
+        console.log("true!");
+        $("#to-do-list").append($(this).parent());
+        $(this).parent().removeClass("bg-danger");
+      } else {
+        $("#to-do-list").prepend($(this).parent());
+        $(this).parent().addClass("bg-danger");
+      }
+    })
 
- });
+  });
 
 
 
