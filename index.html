@@ -11,33 +11,31 @@
   </head>
   <body>
     <div class="container">
-      <form id="create-list">
+      <div class="jumbotron">
+        <form id="create-list">
         <div class="form-group">
           <label for="task">New task to do</label>
           <input class="form-control" type="text" id="task">
         </div>
         <div class="form-group">
           <label for="details">Details</label>
-          <input class="form-control" type="text" id="details">
+          <input class="form-control" type="text" id="details" placeholder="Add notes here...">
         </div>
         <button type="submit" class="btn btn-danger">Add Task</button>
+        <button type="button" class="reset btn btn-default">Clear Finished Tasks</button>
 
       </form>
+      </div>
       <div class="to-do-list-title">
-        <h2> Task Still to be done</h2>
+        <h2>Still To-Do</h2>
       </div>
       <div id="to-do-list">
 
       </div>
-      <div id="done-list">
-        <h2>Finish task</h2>
+      <div id="done-list" class = "well">
+        <h2 id="list-title">Finished!</h2>
 
       </div>
-      <div id="priority-list">
-          <h2>Priority Task</h2>
-      </div>
-
     </div>
-
   </body>
 </html>

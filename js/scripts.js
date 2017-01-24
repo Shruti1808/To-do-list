@@ -5,9 +5,15 @@ var Task= function(taskName, details) {
   this.taskComplete = false;
 }
 
+var remakeH2 = function(parentId) {
+  var title = document.createElement('h2');
+  title.innerHTML = "Finished!";
+  parentId.prepend(title);
+}
+
 var makeTask = function(task) {
   var newDiv = document.createElement('div');
-  var title = document.createElement('h2');
+  var title = document.createElement('h3');
   var details = document.createElement('p');
   var doneButton = document.createElement('button');
   var priorityButton = document.createElement('button');
@@ -32,9 +38,13 @@ var makeTask = function(task) {
   console.log(document.getElementById("to-do-list"));
 }
 
-
 $(document).ready(function(){
-  $("form#create-list").submit(function(event){
+  $(".reset").click(function() {
+    $('#done-list').empty();
+    remakeH2($("#done-list"));
+  });
+
+  $("#create-list").submit(function(event){
     event.preventDefault();
 
     var inputtedTask = $("input#task").val();
